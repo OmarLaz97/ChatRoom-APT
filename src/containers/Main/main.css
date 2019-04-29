@@ -1,0 +1,20 @@
+.SideBar {
+    box-shadow: 1px 0px 8px rgba(15, 15, 15, 0.2);
+    padding: 20px;
+    padding-bottom: 38px;
+    width: 25%;
+    height: 100vh;
+}
+
+.MainBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+body{
+    overflow-y: hidden
+}
