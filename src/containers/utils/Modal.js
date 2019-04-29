@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal } from "semantic-ui-react";
 
 import "./Modal.css";
+import firebase from "firebase";
 
 class ModalExampleSize extends Component {
   state = {
@@ -12,8 +13,8 @@ class ModalExampleSize extends Component {
 
   close = () => {
     this.props.ChatStore.addUser(this.state.username);
-    this.setState({ open: false })
-    };
+    this.setState({ open: false });
+  };
 
   changeHandler = e => {
     e.preventDefault();
@@ -24,8 +25,8 @@ class ModalExampleSize extends Component {
     clone.username = e.target.value;
     if (e.target.value != "") {
       clone.disabled = false;
-    }else{
-        clone.disabled = true;
+    } else {
+      clone.disabled = true;
     }
     this.setState({ username: clone.username });
     this.setState({ disabled: clone.disabled });
