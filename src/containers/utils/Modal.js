@@ -31,6 +31,7 @@ class ModalExampleSize extends Component {
     this.setState({ username: clone.username });
     this.setState({ disabled: clone.disabled });
   };
+  submitHandler = e => {};
 
   render() {
     const { open, size } = this.state;
@@ -38,24 +39,75 @@ class ModalExampleSize extends Component {
     return (
       <div>
         <Modal
-          size="mini"
+          size="large"
           open={open}
           closeOnEscape={false}
           closeOnDimmerClick={false}
           dimmer="blurring"
         >
-          <Modal.Header>Insert a Username</Modal.Header>
           <Modal.Content>
-            <input
-              type="text"
-              className="form-control username"
-              placeholder="Username"
-              aria-label="Example text with two button addons"
-              aria-describedby="button-addon3"
-              onChange={this.changeHandler}
-            />
+            <div>
+              <div class="ui attached tabular menu">
+                <a class="active item">Login</a>
+                <a class="item">Signup</a>
+              </div>
+              <div class="ui bottom attached segment active tab">
+                {" "}
+                <input
+                  type="text"
+                  className="form-control inputElement"
+                  placeholder="Username"
+                  aria-label="Example text with two button addons"
+                  aria-describedby="button-addon3"
+                  onChange={this.changeHandler}
+                />
+                <input
+                  type="text"
+                  className="form-control inputElement"
+                  placeholder="Password"
+                  aria-label="Example text with two button addons"
+                  aria-describedby="button-addon3"
+                  onChange={this.changeHandler}
+                />
+                <Button
+                  positive
+                  icon="checkmark"
+                  labelPosition="right"
+                  content="Submit"
+                  onClick={this.close}
+                  disabled={this.state.disabled}
+                />
+              </div>
+              <div class="ui bottom attached segment tab">
+                {" "}
+                <input
+                  type="text"
+                  className="form-control inputElement"
+                  placeholder="Username"
+                  aria-label="Example text with two button addons"
+                  aria-describedby="button-addon3"
+                  onChange={this.changeHandler}
+                />
+                <input
+                  type="text"
+                  className="form-control inputElement"
+                  placeholder="Password"
+                  aria-label="Example text with two button addons"
+                  aria-describedby="button-addon3"
+                  onChange={this.changeHandler}
+                />
+                <Button
+                  positive
+                  icon="checkmark"
+                  labelPosition="right"
+                  content="Submit"
+                  onClick={this.close}
+                  disabled={this.state.disabled}
+                />
+              </div>
+            </div>
           </Modal.Content>
-          <Modal.Actions>
+          {/* <Modal.Actions>
             <Button
               positive
               icon="checkmark"
@@ -64,7 +116,7 @@ class ModalExampleSize extends Component {
               onClick={this.close}
               disabled={this.state.disabled}
             />
-          </Modal.Actions>
+          </Modal.Actions> */}
         </Modal>
       </div>
     );

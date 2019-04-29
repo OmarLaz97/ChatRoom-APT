@@ -1,28 +1,33 @@
-.dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ui.modal,
-  .ui.active.modal {
-    margin: 0 auto!important;
-    top: auto !important;
-    left: auto !important;
-    transform-origin: center !important;
-    transition: all ease .5s;
-    height: auto;
-  }
-
-
-  .ui.modal>.content {
-    display: block;
-    width: 100%;
-    font-size: 1em;
-    line-height: 1.4;
-    padding: 7px;
-    background: #fff;
+.dimmed.dimmable > .ui.animating.dimmer,
+.dimmed.dimmable > .ui.visible.dimmer,
+.ui.active.dimmer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ui.modal,
+.ui.active.modal {
+  margin: 0 auto !important;
+  top: auto !important;
+  left: auto !important;
+  transform-origin: center !important;
+  transition: all ease 0.5s;
+  height: auto;
 }
 
-.username{
-    border:0px;
+.ui.modal > .content {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.4;
+  padding: 7px;
+  background: #fff;
+  align-content: center;
+}
+
+.inputElement {
+  padding: 5px;
+  margin: 10px;
+  margin-right: 10px;
+  width: 95%;
 }
