@@ -3,8 +3,7 @@ import React from "react";
 import ChatInput from "../ChatInput/ChatInput";
 import Aux from "../utils/wrapper";
 import Modal from "../utils/Modal";
-import SideBar from "../sideBar/sideBar"
-
+import SideBar from "../sideBar/sideBar";
 
 import "./main.css";
 // import "../../main.css";
@@ -19,7 +18,7 @@ class main extends React.Component {
 
     this.state = {
       url: "https://apt-omar-laz.c9users.io",
-      messages:[],
+      messages: [],
       me: "",
       users: []
     };
@@ -29,25 +28,22 @@ class main extends React.Component {
     this.initSocket(this.state.url);
 
     ChatStore.on("new-message", msg => {
-      if(){
+      this.io.emit("chat-message", msg);
 
-      }else{
-        this.io.emit("chat-message", msg);
-      }
-      this.setState({messages: ChatStore.state.messages})
+      this.setState({ messages: ChatStore.state.messages });
     });
 
     ChatStore.on("new-user", user => {
-      this.io.emit("new-user-server", user)
+      this.io.emit("new-user-server", user);
       //this.setState({me: ChatStore.state.me})
     });
-    
+
     //messages comming from other users
     this.io.on("chat-message-new", msg => {
-      ChatStore.addReceivedMsg(msg , () => {
-        this.setState({messages: ChatStore.state.messages})
+      ChatStore.addReceivedMsg(msg, () => {
+        this.setState({ messages: ChatStore.state.messages });
       });
-      console.log("received object " , msg)
+      console.log("received object ", msg);
       console.log(ChatStore.state.messages);
     });
 
@@ -57,11 +53,16 @@ class main extends React.Component {
       console.log(ChatStore.state.activeUsers);
     });
 
-    this.io.on("old-users", user => {
-      console.log(user);
-      ChatStore.appendOldUsers(user);
-      console.log( "old users appended" + ChatStore.state.activeUsers);
-    });
+    // this.io.on("old-users", user => {
+    //   console.log(user);
+    //   ChatStore.appendOldUsers(user);
+    //   console.log("old users appended" + ChatStore.state.activeUsers);
+    // });
+
+    this.io.on("whisper",msg => {
+      console.log(msg);
+    })
+
   }
 
   initSocket = url => {
