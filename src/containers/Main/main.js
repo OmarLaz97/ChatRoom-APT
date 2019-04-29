@@ -4,6 +4,7 @@ import ChatInput from "../ChatInput/ChatInput";
 import Aux from "../utils/wrapper";
 import Modal from "../utils/Modal";
 import SideBar from "../sideBar/sideBar";
+import MainArea from "../mainArea/mainArea";
 
 import "./main.css";
 // import "../../main.css";
@@ -35,22 +36,18 @@ class main extends React.Component {
 
     ChatStore.on("new-user", user => {
       this.io.emit("new-user-server", user);
-      //this.setState({me: ChatStore.state.me})
+      this.setState({ me: ChatStore.state.me });
     });
 
     //messages comming from other users
     this.io.on("chat-message-new", msg => {
-      ChatStore.addReceivedMsg(msg, () => {
-        this.setState({ messages: ChatStore.state.messages });
-      });
-      console.log("received object ", msg);
-      console.log(ChatStore.state.messages);
+      ChatStore.addReceivedMsg(msg);
+      this.setState({ messages: ChatStore.state.messages });
     });
 
     this.io.on("new-user-connected", user => {
-      console.log(user);
       ChatStore.addReceivedUser(user);
-      console.log(ChatStore.state.activeUsers);
+      this.setState({ users: ChatStore.state.activeUsers });
     });
 
     // this.io.on("old-users", user => {
@@ -59,10 +56,10 @@ class main extends React.Component {
     //   console.log("old users appended" + ChatStore.state.activeUsers);
     // });
 
-    this.io.on("whisper",msg => {
-      console.log(msg);
-    })
-
+    this.io.on("whisper", msg => {
+      ChatStore.addReceivedMsg(msg);
+      this.setState({ messages: ChatStore.state.messages });
+    });
   }
 
   initSocket = url => {
@@ -70,15 +67,20 @@ class main extends React.Component {
   };
 
   render() {
+    console.log(this.state.messages);
     return (
       <Aux>
         <Modal ChatStore={ChatStore} />
         <div class="d-flex bd-highlight">
           <div class="p-2 bd-highlight SideBar">
-            <SideBar me={this.state.me} />
+            <SideBar users={this.state.users} />
           </div>
           <div class="p-2 flex-grow-1 bd-highlight MainBar">
-            Main Area
+            <MainArea
+              msgs={this.state.messages}
+              users={this.state.users}
+              me={this.state.me}
+            />
             <ChatInput ChatStore={ChatStore} />
           </div>
         </div>

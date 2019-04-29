@@ -1,29 +1,34 @@
 import React from "react";
-
+import UserStrip from "../utils/userStrip/userStrip"
+import "./sideBar.css"
 class sideBar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: ""
+      users: []
     };
   }
 
   componentWillMount() {
-    this.setState({ username: this.props.me });
+    this.setState({ users: this.props.users });
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ username: nextProps.me });
+    this.setState({ users: nextProps.users });
   }
 
   render() {
     return (
-      <div class="d-flex flex-column bd-highlight mb-3">
-        <div class="p-2 bd-highlight"> <h1>
-            {this.state.username}
-        </h1></div>
-        <div class="p-2 bd-highlight">The Rest of the users</div>
+      <div className="d-flex flex-column bd-highlight mb-3 fillAv">
+        <div className="p-2 bd-highlight userNameBar">
+          <h3>Online Users</h3>
+        </div>
+        <div className="p-2 bd-highlight">
+          {this.state.users.map(onlineUser => (
+              <UserStrip  userName={onlineUser} />
+            ))}
+        </div>
       </div>
     );
   }
