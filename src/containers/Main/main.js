@@ -1,7 +1,7 @@
 import React from "react";
 
 import ChatInput from "../ChatInput/ChatInput";
-import Aux from "../utils/Aux";
+import Aux from "../utils/wrapper";
 import Modal from "../utils/Modal";
 import SideBar from "../sideBar/sideBar"
 
