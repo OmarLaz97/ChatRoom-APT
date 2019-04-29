@@ -1,0 +1,18 @@
+.userNameBar{
+    height: 50px !important;
+    background-color: #f5f3f3;
+    border-left: 1px solid #e0e0e0;
+    border-bottom: #e0e0e0;
+    box-shadow: 1px 0px 8px rgba(15, 15, 15, 0.2);
+
+
+    text-align:center;
+}
+
+.sideBarCol{
+    padding: 0;
+}
+
+.fillAv{
+    width: -webkit-fill-available;
+}
