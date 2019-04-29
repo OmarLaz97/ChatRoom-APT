@@ -1,5 +1,6 @@
 import React from "react";
 import Bubble from "../utils/bubble/bubble";
+
 import "./mainArea.css";
 
 class mainArea extends React.Component {
@@ -27,11 +28,11 @@ class mainArea extends React.Component {
 
   render() {
     return (
-      <div className="d-flex flex-column bd-highlight mb-3 fillAv">
+      <div className="d-flex flex-column bd-highlight mb-3 fillAv mainbox">
         <div className="p-2 bd-highlight mainAreaUp">
           <h1>hello</h1>
         </div>
-        <div className="p-2 bd-highlight">
+        <div className="p-2 bd-highlight msgArea">
           {this.state.messages.map(msg => {
             if (msg.user === this.state.me && msg.whisper === false) {
               return <Bubble msg={msg} class="MineP sb13" userClass="usernameBubbleM" msgClass="msgBubbleM"/>;

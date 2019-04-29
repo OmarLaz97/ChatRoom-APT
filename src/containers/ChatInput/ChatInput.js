@@ -29,7 +29,7 @@ class chatInput extends React.Component {
       <div class="input-group mb-3 chat-input">
         <input
           type="text"
-          class="form-control"
+          className="form-control input"
           placeholder="Type your message..."
           aria-label="Type your message..."
           aria-describedby="button-addon2"
@@ -37,7 +37,7 @@ class chatInput extends React.Component {
         />
         <div class="input-group-append">
           <button
-            class="btn btn-outline-secondary"
+            className="btn btn-outline-secondary"
             type="button"
             id="button-addon2"
             onClick={this.sendMsg}

@@ -76,12 +76,12 @@ class main extends React.Component {
             <SideBar users={this.state.users} />
           </div>
           <div class="p-2 flex-grow-1 bd-highlight MainBar">
+            <ChatInput ChatStore={ChatStore} />
             <MainArea
               msgs={this.state.messages}
               users={this.state.users}
               me={this.state.me}
             />
-            <ChatInput ChatStore={ChatStore} />
           </div>
         </div>
       </Aux>
