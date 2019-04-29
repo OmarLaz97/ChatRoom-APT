@@ -14,3 +14,7 @@
     position: absolute;
     right: 0px;
 }
+
+.input{
+    z-index: 1;
+}

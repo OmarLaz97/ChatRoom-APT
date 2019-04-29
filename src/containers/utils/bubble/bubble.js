@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./bubble.css";
 
 const bubble = props => (

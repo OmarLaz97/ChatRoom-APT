@@ -1,8 +1,24 @@
 .mainAreaUp{
     height: 50px !important;
+    width: -webkit-fill-available;
     background-color: #eeeeee;
+    position: fixed;
 }
 
 .fillAv{
     width: -webkit-fill-available;
+}
+
+.msgArea{
+    height: 100%;
+    overflow-y: scroll !important;
+}
+
+.mainbox{
+    height: 100%;
+
+}
+
+body{
+    position: fixed;
 }
