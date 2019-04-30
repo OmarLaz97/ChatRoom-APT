@@ -24,7 +24,8 @@ class ModalExampleSize extends Component {
     username: "",
     email: "",
     password: "",
-    errorMessage: "",
+    loginErrorMessage: "",
+    signupErrorMessage: "",
     disabled: true
   };
 
@@ -95,7 +96,7 @@ class ModalExampleSize extends Component {
         })
         .catch(error => {
           console.log(error);
-          this.setState({ errorMessage: <p>{error.message}</p> });
+          this.setState({ loginErrorMessage: <p>{error.message}</p> });
         });
     } else if (id === "1") {
       this.auth
@@ -113,7 +114,7 @@ class ModalExampleSize extends Component {
         })
         .catch(error => {
           console.log(error);
-          this.setState({ errorMessage: <p>{error.message}</p> });
+          this.setState({ signupErrorMessage: <p>{error.message}</p> });
         });
     }
   };
@@ -126,7 +127,7 @@ class ModalExampleSize extends Component {
         render: () => (
           <Tab.Pane>
             {" "}
-            {this.state.errorMessage}
+            {this.state.loginErrorMessage}
             <input
               type="email"
               className="form-control inputElement"
@@ -161,6 +162,7 @@ class ModalExampleSize extends Component {
         render: () => (
           <Tab.Pane>
             {" "}
+            {this.state.signupErrorMessage}
             <input
               type="email"
               className="form-control inputElement"
