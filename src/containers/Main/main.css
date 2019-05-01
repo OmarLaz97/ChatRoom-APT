@@ -27,13 +27,17 @@ html {
   background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
+.height {
+  height: 80%;
+}
 
 .chat {
   margin-top: auto;
   margin-bottom: auto;
+  height: 90%;
 }
 .card {
-  height: 500px;
+  height: inherit;
   border-radius: 15px !important;
   background-color: rgba(0, 0, 0, 0.4) !important;
 }
@@ -41,6 +45,7 @@ html {
   padding: 0.75rem 0 !important;
   overflow-y: auto;
   white-space: nowrap;
+  height: inherit;
 }
 .msg_card_body {
   overflow-y: auto;

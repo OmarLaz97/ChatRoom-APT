@@ -89,7 +89,7 @@ class main extends React.Component {
           </div>
         </div> */}
         <body>
-          <div class="container-fluid h-100">
+          <div class="container-fluid h-100 ">
             <div class="row justify-content-center h-100">
               <SideBar users={this.state.users} />
               <div class="col-md-8 col-xl-6 chat">
