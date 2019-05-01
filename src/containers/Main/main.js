@@ -74,10 +74,10 @@ class main extends React.Component {
     return (
       <Aux>
         <Modal ChatStore={ChatStore} />
-        <div class="d-flex bd-highlight">
+        {/* <div class="d-flex bd-highlight">
           <div class="p-2 bd-highlight SideBar">
             <SideBar users={this.state.users} />
-            <button onClick={this.clickHandler}>Signout</button>
+            
           </div>
           <div class="p-2 flex-grow-1 bd-highlight MainBar">
             <ChatInput ChatStore={ChatStore} />
@@ -87,7 +87,24 @@ class main extends React.Component {
               me={this.state.me}
             />
           </div>
-        </div>
+        </div> */}
+        <body>
+          <div class="container-fluid h-100">
+            <div class="row justify-content-center h-100">
+              <SideBar users={this.state.users} />
+              <div class="col-md-8 col-xl-6 chat">
+                <div class="card">
+                  <MainArea
+                    msgs={this.state.messages}
+                    users={this.state.users}
+                    me={this.state.me}
+                  />
+                  <ChatInput ChatStore={ChatStore} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
       </Aux>
     );
   }

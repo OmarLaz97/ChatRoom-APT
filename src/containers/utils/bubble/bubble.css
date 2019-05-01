@@ -1,168 +1,162 @@
-
-  .MineP {
-    width: 300px;
-    margin: 50px auto;
-    border-radius: 15px;
-    background: #00bfb6;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-weight: 900;
-    font-family: arial;
-    position: relative;
-    float: right;
-    margin-left: 100%;
-    margin-right: 12px;
-    margin-top:10px;
-    margin-bottom: 10px;
-    padding: 0px
-  }
-
-  .NMineP {
-    width: 300px;
-    margin: 50px auto;
-    border-radius: 15px;
-    background: whitesmoke;
-    color: black;
-    padding: 20px;
-    text-align: center;
-    font-weight: 900;
-    font-family: arial;
-    position: relative;
-    float: left;
-    margin-right: 100%;
-    margin-left: 12px;
-    margin-top:10px;
-    margin-bottom: 10px;
-    padding: 0px
-  }
-  
-  
-  /* speech bubble 13 */
-  
-  .sb13:before {
-    content: "";
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    border-left: 15px solid #00bfb6;
-    border-right: 15px solid transparent;
-    border-top: 15px solid #00bfb6;
-    border-bottom: 15px solid transparent;
-    right: -16px;
-    top: 0px;
-  }
-  
-  
-  /* speech bubble 14 */
-  
-  .sb14:before {
-    content: "";
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    border-left: 15px solid transparent;
-    border-right: 15px solid whitesmoke;
-    border-top: 15px solid whitesmoke;
-    border-bottom: 15px solid transparent;
-    left: -16px;
-    top: 0px;
-  }
-
-
-  .MWhisper{
-    width: 300px;
-    margin: 50px auto;
-    border-radius: 15px;
-    background: grey;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-weight: 900;
-    font-family: arial;
-    position: relative;
-    float: right;
-    margin-left: 100%;
-    margin-right: 12px;
-    margin-top:10px;
-    margin-bottom: 10px;
-    padding: 0px
-
-  }
-
-  .NWhisper{
-    width: 300px;
-    margin: 50px auto;
-    border-radius: 15px;
-    background: grey;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-weight: 900;
-    font-family: arial;
-    position: relative;
-    float: left;
-    margin-right: 100%;
-    margin-left: 12px;
-    margin-top:10px;
-    margin-bottom: 10px;
-    padding: 0px
-
-  }
-
-  .sb15:before {
-    content: "";
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    border-left: 15px solid grey;
-    border-right: 15px solid transparent;
-    border-top: 15px solid grey;
-    border-bottom: 15px solid transparent;
-    right: -16px;
-    top: 0px;
-  }
-
-  .sb16:before {
-    content: "";
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    border-left: 15px solid transparent;
-    border-right: 15px solid grey;
-    border-top: 15px solid grey;
-    border-bottom: 15px solid transparent;
-    left: -16px;
-    top: 0px;
-  }
-
-#usernameBubbleM{
-    text-align: right;
-    padding-right: 35px !important;
-    font-size:small;
-    box-shadow: 1px 0px 8px rgba(15, 15, 15, 0.2);
-    width: 80px;
-    border-radius: 16px;
-    margin-left: auto;
+.MineP {
+  width: 300px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: #00bfb6;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+  float: right;
+  margin-left: 100%;
+  margin-right: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0px;
 }
 
-#msgBubbleM{
-    text-align: left;
-    font-size:large;
-}
-  
-#usernameBubbleN{
-    text-align: left;
-    padding-left: 35px !important;
-    font-size:small;
-    box-shadow: 1px 0px 8px rgba(15, 15, 15, 0.2);
-    width: 80px;
-    border-radius: 16px;
+.NMineP {
+  width: 300px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: whitesmoke;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+  float: left;
+  margin-right: 100%;
+  margin-left: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0px;
 }
 
-#msgBubbleN{
-    text-align: left;
-    font-size: large
+/* speech bubble 13 */
+
+.sb13:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid #00bfb6;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #00bfb6;
+  border-bottom: 15px solid transparent;
+  right: -16px;
+  top: 0px;
 }
-  
-  
+
+/* speech bubble 14 */
+
+.sb14:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid whitesmoke;
+  border-top: 15px solid whitesmoke;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0px;
+}
+
+.MWhisper {
+  width: 300px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: grey;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+  float: right;
+  margin-left: 100%;
+  margin-right: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0px;
+}
+
+.NWhisper {
+  width: 300px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: grey;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-family: arial;
+  position: relative;
+  float: left;
+  margin-right: 100%;
+  margin-left: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0px;
+}
+
+.sb15:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid grey;
+  border-right: 15px solid transparent;
+  border-top: 15px solid grey;
+  border-bottom: 15px solid transparent;
+  right: -16px;
+  top: 0px;
+}
+
+.sb16:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid grey;
+  border-top: 15px solid grey;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0px;
+}
+
+#usernameBubbleM {
+  text-align: right;
+  padding-right: 35px !important;
+  font-size: small;
+  box-shadow: 1px 0px 8px rgba(15, 15, 15, 0.2);
+  width: auto;
+  max-width: 120px;
+  border-radius: 16px;
+  margin-left: auto;
+}
+
+#msgBubbleM {
+  text-align: left;
+  font-size: large;
+}
+
+#usernameBubbleN {
+  text-align: left;
+  padding-left: 35px !important;
+  font-size: small;
+  box-shadow: 1px 0px 8px rgba(15, 15, 15, 0.2);
+  width: auto;
+  max-width: 120px;
+  border-radius: 16px;
+}
+
+#msgBubbleN {
+  text-align: left;
+  font-size: large;
+}
