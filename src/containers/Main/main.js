@@ -39,6 +39,14 @@ class main extends React.Component {
       this.setState({ me: ChatStore.state.me });
     });
 
+    ChatStore.on("check-nick", nickName => {
+      console.log("check-nick main");
+
+      this.io.emit("check-nickname", nickName, function(unique) {
+        ChatStore.addUserNameUnique(unique);
+      });
+    });
+
     //messages comming from other users
     this.io.on("chat-message-new", msg => {
       ChatStore.addReceivedMsg(msg);

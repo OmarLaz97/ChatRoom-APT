@@ -42,11 +42,14 @@ class ModalExampleSize extends Component {
     };
 
     clone.nickname = e.target.value;
-    if (e.target.value != "") {
+    this.props.ChatStore.checkNickname(clone.nickname);
+    console.log(this.props.ChatStore.getUnique());
+    if (e.target.value != "" && this.props.ChatStore.getUnique()) {
       clone.disabled = false;
     } else {
       clone.disabled = true;
     }
+
     this.setState({ nickname: clone.nickname });
     this.setState({ disabled: clone.disabled });
   };

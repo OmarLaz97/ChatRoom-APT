@@ -5,11 +5,11 @@ class ChatStore extends EventEmitter {
     super();
     this.state = {
       messages: [],
-      me:"",
+      me: "",
       activeUsers: [],
+      unique: false
     };
   }
-
 
   addMessage = msg => {
     // const message = {
@@ -24,22 +24,31 @@ class ChatStore extends EventEmitter {
     //this.state.activeUsers.push(user);
     this.state.me = user;
     this.emit("new-user", user);
-  }
+  };
+  checkNickname = nickname => {
+    this.emit("check-nick", nickname);
+  };
 
   addReceivedMsg = msg => {
-    this.state.messages.push(msg)
-  }
+    this.state.messages.push(msg);
+  };
 
   addReceivedUser = users => {
     //this.state.activeUsers.push(user);
     this.state.activeUsers = users;
-  }
+  };
 
   appendOldUsers = users => {
-    for(var i = 0 ; i < users.length ; i ++){
+    for (var i = 0; i < users.length; i++) {
       this.state.activeUsers.push(users[i]);
     }
-  }
+  };
+  addUserNameUnique = unique => {
+    this.state.unique = unique;
+  };
+  getUnique = () => {
+    return this.state.unique;
+  };
 }
 
 module.exports = new ChatStore();
