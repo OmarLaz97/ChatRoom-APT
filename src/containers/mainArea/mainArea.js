@@ -35,13 +35,41 @@ class mainArea extends React.Component {
         <div className="p-2 bd-highlight msgArea">
           {this.state.messages.map(msg => {
             if (msg.user === this.state.me && msg.whisper === false) {
-              return <Bubble msg={msg} class="MineP sb13" userClass="usernameBubbleM" msgClass="msgBubbleM"/>;
+              return (
+                <Bubble
+                  msg={msg}
+                  class="MineP sb13"
+                  userClass="usernameBubbleM"
+                  msgClass="msgBubbleM"
+                />
+              );
             } else if (msg.user === this.state.me && msg.whisper === true) {
-              return <Bubble msg={msg} class="sb15 MWhisper" userClass="usernameBubbleM" msgClass="msgBubbleM" />;
+              return (
+                <Bubble
+                  msg={msg}
+                  class="sb15 MWhisper"
+                  userClass="usernameBubbleM"
+                  msgClass="msgBubbleM"
+                />
+              );
             } else if (msg.user !== this.state.me && msg.whisper === true) {
-              return <Bubble msg={msg} class="sb16 NWhisper" userClass="usernameBubbleN" msgClass="msgBubbleN" />;
-            } else { 
-              return <Bubble msg={msg} class="NMineP sb14" userClass="usernameBubbleN" msgClass="msgBubbleN" />;
+              return (
+                <Bubble
+                  msg={msg}
+                  class="sb16 NWhisper"
+                  userClass="usernameBubbleN"
+                  msgClass="msgBubbleN"
+                />
+              );
+            } else {
+              return (
+                <Bubble
+                  msg={msg}
+                  class="NMineP sb14"
+                  userClass="usernameBubbleN"
+                  msgClass="msgBubbleN"
+                />
+              );
             }
           })}
         </div>

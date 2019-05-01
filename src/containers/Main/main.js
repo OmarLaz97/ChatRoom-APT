@@ -65,7 +65,10 @@ class main extends React.Component {
   initSocket = url => {
     this.io = io(url);
   };
-
+  clickHandler = () => {
+    console.log("disconnecting");
+    this.io.emit("disconnect");
+  };
   render() {
     console.log(this.state.messages);
     return (
@@ -74,6 +77,7 @@ class main extends React.Component {
         <div class="d-flex bd-highlight">
           <div class="p-2 bd-highlight SideBar">
             <SideBar users={this.state.users} />
+            <button onClick={this.clickHandler}>Signout</button>
           </div>
           <div class="p-2 flex-grow-1 bd-highlight MainBar">
             <ChatInput ChatStore={ChatStore} />

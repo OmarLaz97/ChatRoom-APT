@@ -20,8 +20,9 @@ class ModalExampleSize extends Component {
     this.auth = firebase.auth();
   }
   state = {
-    open: true,
-    username: "",
+    authOpen: true,
+    nicknameOpen: false,
+    nickname: "",
     email: "",
     password: "",
     loginErrorMessage: "",
@@ -30,23 +31,23 @@ class ModalExampleSize extends Component {
   };
 
   close = () => {
-    this.props.ChatStore.addUser(this.state.username);
-    this.setState({ open: false });
+    this.props.ChatStore.addUser(this.state.nickname);
+    this.setState({ nicknameOpen: false });
   };
 
-  usernameChangedHandler = e => {
+  nicknameChangedHandler = e => {
     e.preventDefault();
     const clone = {
       ...this.state
     };
 
-    clone.username = e.target.value;
+    clone.nickname = e.target.value;
     if (e.target.value != "") {
       clone.disabled = false;
     } else {
       clone.disabled = true;
     }
-    this.setState({ username: clone.username });
+    this.setState({ nickname: clone.nickname });
     this.setState({ disabled: clone.disabled });
   };
   emailChangedHandler = e => {
@@ -79,20 +80,21 @@ class ModalExampleSize extends Component {
     this.setState({ password: clone.password });
     this.setState({ disabled: clone.disabled });
   };
-  submitHandler = (e, id) => {
+  submitAuthHandler = (e, id) => {
     if (id === "0") {
       this.auth
         .signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(authUser => {
-          const clone = {
+          /*const clone = {
             ...this.state
           };
 
           clone.username = this.auth.currentUser.displayName;
 
-          this.setState({ username: clone.username });
+          this.setState({ username: clone.username });*/
 
-          this.close();
+          //this.close();
+          this.setState({ nicknameOpen: true, authOpen: false });
         })
         .catch(error => {
           console.log(error);
@@ -102,15 +104,16 @@ class ModalExampleSize extends Component {
       this.auth
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then(user => {
-          // Updates the user attributes:
+          /*
 
           this.auth.currentUser.updateProfile({
-            // <-- Update Method here
+            
 
             displayName: this.state.username
           });
-
-          this.close();
+*/
+          //this.close();
+          this.setState({ nicknameOpen: true, authOpen: false });
         })
         .catch(error => {
           console.log(error);
@@ -120,7 +123,7 @@ class ModalExampleSize extends Component {
   };
 
   render() {
-    const { open, size } = this.state;
+    const { authOpen, nicknameOpen, size } = this.state;
     const panes = [
       {
         menuItem: "Login",
@@ -150,7 +153,7 @@ class ModalExampleSize extends Component {
               labelPosition="right"
               content="Submit"
               onClick={event => {
-                this.submitHandler(event, "0");
+                this.submitAuthHandler(event, "0");
               }}
               disabled={this.state.disabled}
             />
@@ -172,14 +175,6 @@ class ModalExampleSize extends Component {
               onChange={this.emailChangedHandler}
             />
             <input
-              type="text"
-              className="form-control inputElement"
-              placeholder="Username"
-              aria-label="Example text with two button addons"
-              aria-describedby="button-addon3"
-              onChange={this.usernameChangedHandler}
-            />
-            <input
               type="password"
               className="form-control inputElement"
               placeholder="Password"
@@ -193,7 +188,7 @@ class ModalExampleSize extends Component {
               labelPosition="right"
               content="Submit"
               onClick={event => {
-                this.submitHandler(event, "1");
+                this.submitAuthHandler(event, "1");
               }}
               disabled={this.state.disabled}
             />
@@ -206,7 +201,7 @@ class ModalExampleSize extends Component {
       <div>
         <Modal
           size="large"
-          open={open}
+          open={authOpen}
           closeOnEscape={false}
           closeOnDimmerClick={false}
           dimmer="blurring"
@@ -215,6 +210,32 @@ class ModalExampleSize extends Component {
             <div>
               <Tab panes={panes} />
             </div>
+          </Modal.Content>
+        </Modal>
+        <Modal
+          size="large"
+          open={nicknameOpen}
+          closeOnEscape={false}
+          closeOnDimmerClick={false}
+          dimmer="blurring"
+        >
+          <Modal.Content>
+            <input
+              type="text"
+              className="form-control inputElement"
+              placeholder="Nickname"
+              aria-label="Example text with two button addons"
+              aria-describedby="button-addon3"
+              onChange={this.nicknameChangedHandler}
+            />
+            <Button
+              positive
+              icon="checkmark"
+              labelPosition="right"
+              content="Submit"
+              onClick={this.close}
+              disabled={this.state.disabled}
+            />
           </Modal.Content>
         </Modal>
       </div>
