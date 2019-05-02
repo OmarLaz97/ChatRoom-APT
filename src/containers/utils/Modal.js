@@ -27,6 +27,7 @@ class ModalExampleSize extends Component {
     password: "",
     loginErrorMessage: "",
     signupErrorMessage: "",
+    nicknameErrorMessage: "",
     disabled: true
   };
 
@@ -42,12 +43,19 @@ class ModalExampleSize extends Component {
     };
 
     clone.nickname = e.target.value;
-    this.props.ChatStore.checkNickname(clone.nickname);
-    console.log(this.props.ChatStore.getUnique());
-    if (e.target.value != "" && this.props.ChatStore.getUnique()) {
+
+    console.log("modal" + this.props.users);
+
+    if (
+      e.target.value.trim() != "" &&
+      !this.props.users.includes(e.target.value)
+    ) {
       clone.disabled = false;
     } else {
       clone.disabled = true;
+      if (this.props.users.includes(e.target.value)) {
+        this.setState({ nicknameErrorMessage: <p> Username already taken</p> });
+      }
     }
 
     this.setState({ nickname: clone.nickname });
@@ -97,7 +105,11 @@ class ModalExampleSize extends Component {
           this.setState({ username: clone.username });*/
 
           //this.close();
-          this.setState({ nicknameOpen: true, authOpen: false });
+          this.setState({
+            nicknameOpen: true,
+            authOpen: false,
+            disabled: true
+          });
         })
         .catch(error => {
           console.log(error);
@@ -116,7 +128,11 @@ class ModalExampleSize extends Component {
           });
 */
           //this.close();
-          this.setState({ nicknameOpen: true, authOpen: false });
+          this.setState({
+            nicknameOpen: true,
+            authOpen: false,
+            disabled: true
+          });
         })
         .catch(error => {
           console.log(error);
@@ -223,6 +239,7 @@ class ModalExampleSize extends Component {
           dimmer="blurring"
         >
           <Modal.Content>
+            {this.state.nicknameErrorMessage}
             <input
               type="text"
               className="form-control inputElement"

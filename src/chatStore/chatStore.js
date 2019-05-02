@@ -25,9 +25,6 @@ class ChatStore extends EventEmitter {
     this.state.me = user;
     this.emit("new-user", user);
   };
-  checkNickname = nickname => {
-    this.emit("check-nick", nickname);
-  };
 
   addReceivedMsg = msg => {
     this.state.messages.push(msg);
@@ -45,9 +42,6 @@ class ChatStore extends EventEmitter {
   };
   addUserNameUnique = unique => {
     this.state.unique = unique;
-  };
-  getUnique = () => {
-    return this.state.unique;
   };
 }
 

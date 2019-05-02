@@ -21,7 +21,9 @@ class main extends React.Component {
       url: "https://apt-omar-laz.c9users.io",
       messages: [],
       me: "",
-      users: []
+      users: [],
+      unique: false,
+      loggedout: null
     };
   }
 
@@ -39,14 +41,6 @@ class main extends React.Component {
       this.setState({ me: ChatStore.state.me });
     });
 
-    ChatStore.on("check-nick", nickName => {
-      console.log("check-nick main");
-
-      this.io.emit("check-nickname", nickName, function(unique) {
-        ChatStore.addUserNameUnique(unique);
-      });
-    });
-
     //messages comming from other users
     this.io.on("chat-message-new", msg => {
       ChatStore.addReceivedMsg(msg);
@@ -58,11 +52,12 @@ class main extends React.Component {
       this.setState({ users: ChatStore.state.activeUsers });
     });
 
-    // this.io.on("old-users", user => {
-    //   console.log(user);
-    //   ChatStore.appendOldUsers(user);
-    //   console.log("old users appended" + ChatStore.state.activeUsers);
-    // });
+    this.io.on("old-users", user => {
+      console.log("old users" + user);
+      ChatStore.appendOldUsers(user);
+      // console.log("old users appended" + ChatStore.state.activeUsers);
+      this.setState({ users: ChatStore.state.activeUsers });
+    });
 
     this.io.on("whisper", msg => {
       ChatStore.addReceivedMsg(msg);
@@ -73,33 +68,33 @@ class main extends React.Component {
   initSocket = url => {
     this.io = io(url);
   };
-  clickHandler = () => {
+  clickHandler = event => {
     console.log("disconnecting");
-    this.io.emit("disconnect");
+    this.io.emit("logout");
+    this.setState({
+      loggedout: <Modal ChatStore={ChatStore} />
+    });
   };
   render() {
-    console.log(this.state.messages);
     return (
       <Aux>
-        <Modal ChatStore={ChatStore} />
-        {/* <div class="d-flex bd-highlight">
-          <div class="p-2 bd-highlight SideBar">
-            <SideBar users={this.state.users} />
-            
-          </div>
-          <div class="p-2 flex-grow-1 bd-highlight MainBar">
-            <ChatInput ChatStore={ChatStore} />
-            <MainArea
-              msgs={this.state.messages}
-              users={this.state.users}
-              me={this.state.me}
-            />
-          </div>
-        </div> */}
+        <Modal ChatStore={ChatStore} users={this.state.users} />
+
         <body>
           <div class="container-fluid h-100 ">
-            <div class="row justify-content-center h-100">
+            <div class="col narrow-margin justify-content-flex-end">
+              <button
+                type="button"
+                class="btn btn-lg btn-outline-secondary"
+                onClick={this.clickHandler}
+              >
+                {" "}
+                logout
+              </button>
+            </div>
+            <div class="row justify-content-center h-100 ">
               <SideBar users={this.state.users} />
+
               <div class="col-md-8 col-xl-6 chat">
                 <div class="card">
                   <MainArea
@@ -108,6 +103,7 @@ class main extends React.Component {
                     me={this.state.me}
                   />
                   <ChatInput ChatStore={ChatStore} />
+                  {this.state.loggedout}
                 </div>
               </div>
             </div>
