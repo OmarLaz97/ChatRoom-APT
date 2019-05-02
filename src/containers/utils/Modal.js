@@ -51,6 +51,7 @@ class ModalExampleSize extends Component {
       !this.props.users.includes(e.target.value)
     ) {
       clone.disabled = false;
+      this.setState({ nicknameErrorMessage: "" });
     } else {
       clone.disabled = true;
       if (this.props.users.includes(e.target.value)) {
